@@ -1,0 +1,2581 @@
+[24/09/47 04:30 م] do: <!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اصل الرغوه - نظام الولاء</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root {
+    --primary: #0077B6;
+    --primary-dark: #023E8A;
+    --primary-light: #90E0EF;
+    --teal: #00B4D8;
+    --teal-light: #CAF0F8;
+    --white: #FFFFFF;
+    --bg: #F0F8FF;
+    --text: #03045E;
+    --text-light: #48CAE4;
+    --success: #06D6A0;
+    --warning: #FFB703;
+    --danger: #EF233C;
+    --card-shadow: 0 8px 32px rgba(0,119,182,0.15);
+    --radius: 20px;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+font-family: ‘Cairo’, sans-serif;
+background: var(–bg);
+color: var(–text);
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+/* ===== PAGES ===== */
+.page { display: none; min-height: 100vh; }
+.page.active { display: block; }
+
+/* ===== HEADER ===== */
+.header {
+background: linear-gradient(135deg, var(–primary-dark) 0%, var(–primary) 50%, var(–teal) 100%);
+padding: 16px 20px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+position: sticky;
+top: 0;
+z-index: 100;
+box-shadow: 0 4px 20px rgba(2,62,138,0.3);
+}
+
+.header-logo {
+display: flex;
+align-items: center;
+gap: 10px;
+text-decoration: none;
+cursor: pointer;
+}
+
+.header-logo .logo-icon {
+width: 44px;
+height: 44px;
+background: rgba(255,255,255,0.2);
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 22px;
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255,255,255,0.3);
+}
+
+.header-logo .logo-text {
+color: white;
+font-weight: 900;
+font-size: 18px;
+line-height: 1.2;
+}
+
+.header-logo .logo-sub {
+color: rgba(255,255,255,0.8);
+font-size: 11px;
+font-weight: 400;
+}
+
+.header-nav {
+display: flex;
+gap: 8px;
+}
+
+.header-nav button {
+background: rgba(255,255,255,0.15);
+border: 1px solid rgba(255,255,255,0.3);
+color: white;
+padding: 8px 14px;
+border-radius: 12px;
+font-family: ‘Cairo’, sans-serif;
+font-size: 13px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.2s;
+backdrop-filter: blur(5px);
+}
+
+.header-nav button:hover {
+background: rgba(255,255,255,0.3);
+transform: translateY(-1px);
+}
+
+/* ===== HOME PAGE ===== */
+.hero {
+background: linear-gradient(160deg, var(–primary-dark) 0%, var(–primary) 40%, var(–teal) 100%);
+padding: 50px 20px 80px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+
+.hero::before {
+content: ‘’;
+position: absolute;
+top: -50%;
+right: -30%;
+width: 600px;
+height: 600px;
+background: radial-gradient(circle, rgba(144,224,239,0.2) 0%, transparent 70%);
+border-radius: 50%;
+animation: pulse 4s ease-in-out infinite;
+}
+
+.hero::after {
+content: ‘’;
+position: absolute;
+bottom: -30%;
+left: -20%;
+width: 400px;
+height: 400px;
+background: radial-gradient(circle, rgba(0,180,216,0.15) 0%, transparent 70%);
+border-radius: 50%;
+animation: pulse 4s ease-in-out infinite 2s;
+}
+
+@keyframes pulse {
+0%, 100% { transform: scale(1); opacity: 0.5; }
+50% { transform: scale(1.1); opacity: 1; }
+}
+
+.hero-badge {
+display: inline-block;
+background: rgba(255,255,255,0.2);
+color: white;
+padding: 6px 18px;
+border-radius: 50px;
+font-size: 13px;
+font-weight: 600;
+margin-bottom: 20px;
+border: 1px solid rgba(255,255,255,0.3);
+backdrop-filter: blur(10px);
+position: relative;
+z-index: 1;
+}
+
+.hero-title {
+color: white;
+font-size: clamp(28px, 8vw, 48px);
+font-weight: 900;
+line-height: 1.2;
+margin-bottom: 16px;
+position: relative;
+z-index: 1;
+text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+
+.hero-title span {
+color: var(–primary-light);
+}
+
+.hero-subtitle {
+color: rgba(255,255,255,0.9);
+font-size: 16px;
+line-height: 1.7;
+max-width: 340px;
+margin: 0 auto 30px;
+position: relative;
+z-index: 1;
+font-weight: 600;
+}
+
+.hero-images {
+display: flex;
+gap: 10px;
+justify-content: center;
+margin-bottom: 30px;
+position: relative;
+z-index: 1;
+overflow: hidden;
+}
+
+.hero-img-card {
+[24/09/47 04:30 م] do: width: 90px;
+height: 90px;
+border-radius: 16px;
+overflow: hidden;
+border: 3px solid rgba(255,255,255,0.4);
+flex-shrink: 0;
+box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.hero-img-card img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.hero-emoji-card {
+width: 90px;
+height: 90px;
+border-radius: 16px;
+background: rgba(255,255,255,0.15);
+border: 3px solid rgba(255,255,255,0.4);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+font-size: 28px;
+backdrop-filter: blur(10px);
+box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+flex-shrink: 0;
+gap: 4px;
+}
+
+.hero-emoji-card span {
+color: white;
+font-size: 10px;
+font-weight: 700;
+}
+
+.btn-primary {
+background: white;
+color: var(–primary-dark);
+border: none;
+padding: 16px 40px;
+border-radius: 50px;
+font-family: ‘Cairo’, sans-serif;
+font-size: 18px;
+font-weight: 900;
+cursor: pointer;
+transition: all 0.3s;
+box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+position: relative;
+z-index: 1;
+display: inline-block;
+}
+
+.btn-primary:hover {
+transform: translateY(-3px);
+box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+
+.btn-primary:active {
+transform: translateY(0);
+}
+
+/* Stats */
+.stats-section {
+display: flex;
+gap: 12px;
+padding: 20px;
+margin-top: -30px;
+position: relative;
+z-index: 10;
+}
+
+.stat-card {
+flex: 1;
+background: white;
+border-radius: 16px;
+padding: 20px 12px;
+text-align: center;
+box-shadow: var(–card-shadow);
+}
+
+.stat-card .stat-icon { font-size: 28px; margin-bottom: 8px; }
+.stat-card .stat-num { font-size: 16px; font-weight: 900; color: var(–primary); }
+.stat-card .stat-label { font-size: 12px; color: #666; font-weight: 600; }
+
+/* How it works */
+.section {
+padding: 30px 20px;
+}
+
+.section-title {
+font-size: 20px;
+font-weight: 900;
+color: var(–text);
+margin-bottom: 20px;
+text-align: center;
+}
+
+.section-title span {
+color: var(–primary);
+}
+
+.steps {
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+
+.step-card {
+background: white;
+border-radius: var(–radius);
+padding: 20px;
+display: flex;
+align-items: center;
+gap: 16px;
+box-shadow: var(–card-shadow);
+border-right: 4px solid var(–primary);
+}
+
+.step-num {
+width: 48px;
+height: 48px;
+background: linear-gradient(135deg, var(–primary), var(–teal));
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-size: 22px;
+flex-shrink: 0;
+}
+
+.step-content h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.step-content p { font-size: 13px; color: #666; line-height: 1.5; }
+
+/* CTA section */
+.cta-section {
+margin: 20px;
+background: linear-gradient(135deg, var(–primary-dark), var(–teal));
+border-radius: 24px;
+padding: 30px 20px;
+text-align: center;
+color: white;
+}
+
+.cta-section h2 { font-size: 20px; font-weight: 900; margin-bottom: 10px; }
+.cta-section p { font-size: 14px; opacity: 0.9; margin-bottom: 20px; }
+
+/* ===== LOYALTY CARD PAGE ===== */
+.phone-input-container {
+padding: 40px 20px;
+max-width: 400px;
+margin: 0 auto;
+text-align: center;
+}
+
+.phone-input-container .icon-big {
+font-size: 64px;
+margin-bottom: 20px;
+display: block;
+}
+
+.phone-input-container h2 {
+font-size: 24px;
+font-weight: 900;
+margin-bottom: 8px;
+color: var(–text);
+}
+
+.phone-input-container p {
+color: #666;
+font-size: 14px;
+margin-bottom: 30px;
+line-height: 1.6;
+}
+
+.input-group {
+background: white;
+border-radius: 16px;
+padding: 6px;
+box-shadow: var(–card-shadow);
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 16px;
+border: 2px solid transparent;
+transition: all 0.3s;
+}
+
+.input-group:focus-within {
+border-color: var(–primary);
+box-shadow: 0 0 0 4px rgba(0,119,182,0.1);
+}
+
+.input-group .input-icon {
+width: 44px;
+height: 44px;
+background: linear-gradient(135deg, var(–primary), var(–teal));
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 20px;
+flex-shrink: 0;
+}
+
+.input-group input {
+flex: 1;
+border: none;
+outline: none;
+font-family: ‘Cairo’, sans-serif;
+font-size: 18px;
+font-weight: 700;
+color: var(–text);
+direction: ltr;
+text-align: center;
+padding: 8px 0;
+background: transparent;
+}
+
+.input-group input::placeholder {
+color: #bbb;
+font-size: 14px;
+[24/09/47 04:30 م] do: font-weight: 400;
+direction: rtl;
+text-align: center;
+}
+
+.btn-full {
+width: 100%;
+background: linear-gradient(135deg, var(–primary-dark), var(–teal));
+color: white;
+border: none;
+padding: 16px;
+border-radius: 16px;
+font-family: ‘Cairo’, sans-serif;
+font-size: 17px;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s;
+box-shadow: 0 6px 20px rgba(0,119,182,0.3);
+}
+
+.btn-full:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,119,182,0.4); }
+.btn-full:active { transform: translateY(0); }
+
+/* Loyalty Card */
+.loyalty-card-container {
+padding: 20px;
+max-width: 420px;
+margin: 0 auto;
+}
+
+.customer-greeting {
+background: linear-gradient(135deg, var(–primary-dark), var(–teal));
+border-radius: 24px;
+padding: 24px 20px;
+color: white;
+margin-bottom: 20px;
+position: relative;
+overflow: hidden;
+}
+
+.customer-greeting::after {
+content: ‘’;
+position: absolute;
+left: -10px;
+bottom: -10px;
+font-size: 80px;
+opacity: 0.1;
+}
+
+.customer-greeting .phone-display {
+font-size: 13px;
+opacity: 0.8;
+margin-bottom: 6px;
+}
+
+.customer-greeting h2 {
+font-size: 22px;
+font-weight: 900;
+margin-bottom: 4px;
+}
+
+.customer-greeting .status-badge {
+display: inline-block;
+background: rgba(255,255,255,0.2);
+padding: 4px 12px;
+border-radius: 20px;
+font-size: 12px;
+font-weight: 600;
+margin-top: 6px;
+}
+
+/* Wash Cards */
+.wash-cards-section {
+background: white;
+border-radius: 24px;
+padding: 24px 20px;
+box-shadow: var(–card-shadow);
+margin-bottom: 16px;
+}
+
+.wash-cards-title {
+font-size: 16px;
+font-weight: 700;
+margin-bottom: 20px;
+color: var(–text);
+text-align: center;
+}
+
+.wash-cars-grid {
+display: flex;
+gap: 8px;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 20px;
+}
+
+.wash-car-item {
+width: 56px;
+height: 64px;
+border-radius: 14px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 4px;
+font-size: 28px;
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+position: relative;
+}
+
+.wash-car-item.empty {
+background: #f0f4f8;
+border: 2px dashed #c8d6e0;
+}
+
+.wash-car-item.filled {
+background: linear-gradient(135deg, #e8f8f5, #d0f5ec);
+border: 2px solid var(–success);
+animation: carIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wash-car-item.free {
+background: linear-gradient(135deg, #fff9e6, #fff0b3);
+border: 2px solid var(–warning);
+animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wash-car-item.free.earned {
+background: linear-gradient(135deg, #FFF0B3, #FFD700);
+border: 3px solid var(–warning);
+animation: celebrate 0.8s ease-in-out;
+box-shadow: 0 4px 20px rgba(255,183,3,0.4);
+}
+
+@keyframes carIn {
+0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes bounceIn {
+0% { transform: scale(0); }
+60% { transform: scale(1.2); }
+100% { transform: scale(1); }
+}
+
+@keyframes celebrate {
+0%, 100% { transform: scale(1); }
+25% { transform: scale(1.1) rotate(-3deg); }
+75% { transform: scale(1.1) rotate(3deg); }
+}
+
+.wash-car-item .car-num {
+font-size: 10px;
+font-weight: 700;
+color: #888;
+line-height: 1;
+}
+
+.wash-car-item.filled .car-num { color: var(–success); }
+.wash-car-item.free .car-num { color: var(–warning); font-size: 11px; }
+
+/* Progress Bar */
+.progress-section {
+margin-top: 16px;
+}
+
+.progress-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 8px;
+}
+
+.progress-header span {
+font-size: 13px;
+font-weight: 600;
+color: #666;
+}
+
+.progress-header .progress-count {
+font-size: 15px;
+font-weight: 900;
+color: var(–primary);
+}
+
+.progress-bar-bg {
+background: #e8f4fd;
+border-radius: 50px;
+height: 12px;
+overflow: hidden;
+position: relative;
+}
+
+.progress-bar-fill {
+height: 100%;
+background: linear-gradient(90deg, var(–primary), var(–teal));
+border-radius: 50px;
+transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+position: relative;
+overflow: hidden;
+}
+
+.progress-bar-fill::after {
+content: ‘’;
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+animation: shimmer 2s infinite;
+}
+[24/09/47 04:30 م] do: @keyframes shimmer {
+100% { left: 100%; }
+}
+
+.next-free-badge {
+margin-top: 12px;
+text-align: center;
+font-size: 13px;
+color: var(–primary);
+font-weight: 700;
+}
+
+/* Free wash celebration */
+.free-wash-banner {
+background: linear-gradient(135deg, var(–warning), #FF8C00);
+border-radius: 16px;
+padding: 16px;
+text-align: center;
+color: white;
+font-size: 16px;
+font-weight: 900;
+margin-top: 16px;
+animation: glowPulse 2s ease-in-out infinite;
+display: none;
+}
+
+.free-wash-banner.show { display: block; }
+
+@keyframes glowPulse {
+0%, 100% { box-shadow: 0 4px 20px rgba(255,183,3,0.4); }
+50% { box-shadow: 0 8px 40px rgba(255,183,3,0.7); }
+}
+
+/* Code Input Section */
+.code-section {
+background: white;
+border-radius: 24px;
+padding: 24px 20px;
+box-shadow: var(–card-shadow);
+margin-bottom: 16px;
+}
+
+.code-section h3 {
+font-size: 16px;
+font-weight: 700;
+margin-bottom: 6px;
+}
+
+.code-section p {
+font-size: 13px;
+color: #666;
+margin-bottom: 16px;
+}
+
+.code-input-row {
+display: flex;
+gap: 10px;
+}
+
+.code-input-row input {
+flex: 1;
+border: 2px solid #e0edf5;
+border-radius: 12px;
+padding: 12px 16px;
+font-family: ‘Cairo’, sans-serif;
+font-size: 18px;
+font-weight: 700;
+text-align: center;
+letter-spacing: 4px;
+outline: none;
+transition: all 0.3s;
+direction: ltr;
+text-transform: uppercase;
+}
+
+.code-input-row input:focus {
+border-color: var(–primary);
+box-shadow: 0 0 0 4px rgba(0,119,182,0.1);
+}
+
+.code-input-row button {
+background: linear-gradient(135deg, var(–primary), var(–teal));
+color: white;
+border: none;
+padding: 12px 20px;
+border-radius: 12px;
+font-family: ‘Cairo’, sans-serif;
+font-size: 14px;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s;
+white-space: nowrap;
+}
+
+.code-input-row button:hover { transform: translateY(-1px); }
+
+/* Alert messages */
+.alert {
+padding: 12px 16px;
+border-radius: 12px;
+font-size: 13px;
+font-weight: 600;
+margin-top: 12px;
+display: none;
+align-items: center;
+gap: 8px;
+}
+
+.alert.show { display: flex; }
+.alert.success { background: #e8faf5; color: #047857; border: 1px solid #a7f3d0; }
+.alert.error { background: #fff1f2; color: #be123c; border: 1px solid #fecdd3; }
+.alert.warning { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+
+/* History section */
+.history-section {
+background: white;
+border-radius: 24px;
+padding: 24px 20px;
+box-shadow: var(–card-shadow);
+margin-bottom: 16px;
+}
+
+.history-section h3 {
+font-size: 16px;
+font-weight: 700;
+margin-bottom: 16px;
+}
+
+.history-list {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.history-item {
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 12px;
+background: #f8fbff;
+border-radius: 12px;
+}
+
+.history-item .hist-icon {
+width: 40px;
+height: 40px;
+background: linear-gradient(135deg, var(–primary-light), var(–teal-light));
+border-radius: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 18px;
+flex-shrink: 0;
+}
+
+.history-item .hist-info { flex: 1; }
+.history-item .hist-info .hist-title { font-size: 13px; font-weight: 700; }
+.history-item .hist-info .hist-date { font-size: 11px; color: #888; margin-top: 2px; }
+.history-item .hist-badge { background: var(–success); color: white; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+.history-item .hist-badge.free { background: var(–warning); }
+
+/* Change phone button */
+.change-phone-btn {
+background: none;
+border: none;
+color: var(–primary);
+font-family: ‘Cairo’, sans-serif;
+font-size: 13px;
+font-weight: 600;
+cursor: pointer;
+text-decoration: underline;
+display: block;
+text-align: center;
+margin: 0 auto 20px;
+padding: 8px;
+}
+
+/* ===== EMPLOYEE PAGE ===== */
+.employee-login {
+padding: 40px 20px;
+max-width: 400px;
+margin: 0 auto;
+text-align: center;
+}
+
+.employee-login .icon-big { font-size: 64px; margin-bottom: 20px; display: block; }
+.employee-login h2 { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+.employee-login p { color: #666; font-size: 14px; margin-bottom: 30px; }
+
+.employee-dashboard {
+padding: 20px;
+max-width: 420px;
+margin: 0 auto;
+}
+
+.employee-header-card {
+[24/09/47 04:30 م] do: background: linear-gradient(135deg, var(–primary-dark), var(–primary));
+border-radius: 24px;
+padding: 20px;
+color: white;
+margin-bottom: 20px;
+display: flex;
+align-items: center;
+gap: 16px;
+}
+
+.employee-header-card .emp-icon {
+width: 56px;
+height: 56px;
+background: rgba(255,255,255,0.2);
+border-radius: 16px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 28px;
+}
+
+.employee-header-card h2 { font-size: 18px; font-weight: 900; }
+.employee-header-card p { font-size: 13px; opacity: 0.8; }
+
+/* Search customer */
+.employee-card {
+background: white;
+border-radius: 24px;
+padding: 24px 20px;
+box-shadow: var(–card-shadow);
+margin-bottom: 16px;
+}
+
+.employee-card h3 {
+font-size: 16px;
+font-weight: 700;
+margin-bottom: 16px;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.search-result-card {
+background: #f0f8ff;
+border-radius: 16px;
+padding: 16px;
+margin-top: 16px;
+border: 2px solid var(–primary-light);
+display: none;
+}
+
+.search-result-card.show { display: block; }
+
+.search-result-card .customer-info {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 12px;
+}
+
+.search-result-card .customer-info .cust-phone {
+font-size: 16px;
+font-weight: 900;
+color: var(–text);
+direction: ltr;
+}
+
+.search-result-card .customer-info .cust-count {
+background: linear-gradient(135deg, var(–primary), var(–teal));
+color: white;
+padding: 6px 14px;
+border-radius: 20px;
+font-size: 14px;
+font-weight: 700;
+}
+
+.mini-wash-grid {
+display: flex;
+gap: 8px;
+margin-bottom: 16px;
+}
+
+.mini-wash-dot {
+width: 36px;
+height: 36px;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 16px;
+transition: all 0.3s;
+}
+
+.mini-wash-dot.empty { background: #e8f0f8; }
+.mini-wash-dot.filled { background: linear-gradient(135deg, #e8f8f5, #d0f5ec); border: 1px solid var(–success); }
+.mini-wash-dot.free { background: linear-gradient(135deg, #fff9e6, #fff0b3); border: 1px solid var(–warning); }
+
+.btn-add-wash {
+width: 100%;
+background: linear-gradient(135deg, var(–success), #00b894);
+color: white;
+border: none;
+padding: 14px;
+border-radius: 14px;
+font-family: ‘Cairo’, sans-serif;
+font-size: 16px;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s;
+box-shadow: 0 4px 20px rgba(6,214,160,0.3);
+}
+
+.btn-add-wash:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(6,214,160,0.4); }
+.btn-add-wash:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* Daily code section */
+.daily-code-display {
+background: linear-gradient(135deg, #f0fff8, #e0faf0);
+border: 2px solid var(–success);
+border-radius: 16px;
+padding: 20px;
+text-align: center;
+margin-bottom: 16px;
+}
+
+.daily-code-display .code-label { font-size: 12px; color: #666; font-weight: 600; margin-bottom: 8px; }
+
+.daily-code-display .code-value {
+font-size: 40px;
+font-weight: 900;
+color: var(–primary-dark);
+letter-spacing: 8px;
+direction: ltr;
+margin-bottom: 8px;
+font-variant-numeric: tabular-nums;
+}
+
+.daily-code-display .code-timer {
+font-size: 12px;
+color: var(–success);
+font-weight: 700;
+}
+
+.btn-generate-code {
+width: 100%;
+background: linear-gradient(135deg, var(–teal), var(–primary));
+color: white;
+border: none;
+padding: 14px;
+border-radius: 14px;
+font-family: ‘Cairo’, sans-serif;
+font-size: 15px;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s;
+}
+
+.btn-generate-code:hover { transform: translateY(-2px); }
+
+/* Operations log */
+.log-item {
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 10px 12px;
+background: #f8fbff;
+border-radius: 10px;
+margin-bottom: 8px;
+font-size: 13px;
+}
+
+.log-item .log-icon { font-size: 20px; flex-shrink: 0; }
+.log-item .log-info { flex: 1; }
+.log-item .log-info .log-phone { font-weight: 700; direction: ltr; display: inline; }
+.log-item .log-info .log-time { color: #888; font-size: 11px; display: block; margin-top: 2px; }
+.log-item .log-type { background: var(–primary-light); color: var(–primary-dark); padding: 3px 8px; border-radius: 8px; font-size: 11px; font-weight: 700; }
+
+/* QR Code page */
+.qr-page {
+padding: 30px 20px;
+max-width: 420px;
+margin: 0 auto;
+}
+
+.qr-card {
+[24/09/47 04:30 م] do: background: white;
+border-radius: 24px;
+padding: 30px 20px;
+text-align: center;
+box-shadow: var(–card-shadow);
+margin-bottom: 20px;
+border: 3px solid var(–primary-light);
+}
+
+.qr-card h3 { font-size: 18px; font-weight: 900; margin-bottom: 6px; color: var(–text); }
+.qr-card p { font-size: 13px; color: #666; margin-bottom: 20px; }
+
+.qr-code-wrapper {
+background: white;
+display: inline-block;
+padding: 16px;
+border-radius: 16px;
+border: 2px solid var(–primary-light);
+margin-bottom: 16px;
+}
+
+.qr-card .qr-label {
+background: linear-gradient(135deg, var(–primary), var(–teal));
+color: white;
+padding: 10px 20px;
+border-radius: 50px;
+font-size: 14px;
+font-weight: 700;
+display: inline-block;
+}
+
+/* Contact page */
+.contact-page {
+padding: 30px 20px;
+max-width: 420px;
+margin: 0 auto;
+text-align: center;
+}
+
+.contact-hero {
+background: linear-gradient(135deg, var(–primary-dark), var(–teal));
+border-radius: 24px;
+padding: 40px 20px;
+color: white;
+margin-bottom: 24px;
+}
+
+.contact-hero .contact-icon { font-size: 64px; margin-bottom: 16px; display: block; }
+.contact-hero h2 { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+.contact-hero p { font-size: 14px; opacity: 0.9; }
+.contact-hero .phone-num { font-size: 28px; font-weight: 900; direction: ltr; margin-top: 12px; }
+
+.contact-buttons {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.contact-btn {
+display: flex;
+align-items: center;
+gap: 16px;
+background: white;
+border: none;
+border-radius: 16px;
+padding: 18px 20px;
+cursor: pointer;
+box-shadow: var(–card-shadow);
+text-decoration: none;
+transition: all 0.3s;
+color: var(–text);
+}
+
+.contact-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,119,182,0.2); }
+
+.contact-btn .contact-btn-icon {
+width: 52px;
+height: 52px;
+border-radius: 14px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 24px;
+flex-shrink: 0;
+}
+
+.contact-btn.call .contact-btn-icon { background: linear-gradient(135deg, #0077B6, #00B4D8); }
+.contact-btn.whatsapp .contact-btn-icon { background: linear-gradient(135deg, #25D366, #128C7E); }
+
+.contact-btn .contact-btn-info { text-align: right; }
+.contact-btn .contact-btn-info .cbtn-title { font-size: 16px; font-weight: 900; }
+.contact-btn .contact-btn-info .cbtn-num { font-size: 14px; color: #666; direction: ltr; }
+.contact-btn .contact-btn-arrow { margin-right: auto; color: #ccc; font-size: 18px; }
+
+/* Bottom Nav */
+.bottom-nav {
+position: fixed;
+bottom: 0;
+left: 0;
+right: 0;
+background: white;
+border-top: 1px solid #e0edf5;
+display: flex;
+padding: 8px 0;
+padding-bottom: max(8px, env(safe-area-inset-bottom));
+box-shadow: 0 -4px 20px rgba(0,119,182,0.1);
+z-index: 100;
+}
+
+.bottom-nav-item {
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 4px;
+padding: 6px 0;
+cursor: pointer;
+transition: all 0.2s;
+border: none;
+background: none;
+font-family: ‘Cairo’, sans-serif;
+}
+
+.bottom-nav-item .nav-icon { font-size: 22px; transition: all 0.3s; }
+.bottom-nav-item .nav-label { font-size: 11px; font-weight: 600; color: #aaa; transition: all 0.3s; }
+
+.bottom-nav-item.active .nav-icon { transform: translateY(-2px); }
+.bottom-nav-item.active .nav-label { color: var(–primary); font-weight: 700; }
+
+/* Page padding for bottom nav */
+.page-content {
+padding-bottom: 80px;
+}
+
+/* Loading spinner */
+.spinner {
+display: inline-block;
+width: 20px;
+height: 20px;
+border: 3px solid rgba(255,255,255,0.3);
+border-radius: 50%;
+border-top-color: white;
+animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* Toast notification */
+.toast {
+position: fixed;
+top: 20px;
+left: 50%;
+transform: translateX(-50%) translateY(-100px);
+background: var(–text);
+color: white;
+padding: 12px 24px;
+border-radius: 50px;
+font-size: 14px;
+font-weight: 600;
+z-index: 9999;
+transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+text-align: center;
+max-width: 90vw;
+box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.toast.show { transform: translateX(-50%) translateY(0); }
+.toast.success { background: var(–success); }
+.toast.error { background: var(–danger); }
+[24/09/47 04:30 م] do: /* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(–primary-light); border-radius: 10px; }
+
+/* Confetti animation */
+@keyframes confettiFall {
+0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+.confetti-piece {
+position: fixed;
+top: 0;
+width: 10px;
+height: 10px;
+border-radius: 2px;
+animation: confettiFall 3s linear forwards;
+z-index: 9999;
+pointer-events: none;
+}
+
+/* Info badge */
+.info-badge {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+background: var(–teal-light);
+color: var(–primary-dark);
+padding: 6px 12px;
+border-radius: 20px;
+font-size: 12px;
+font-weight: 600;
+}
+
+/* ===== RATING MODAL ===== */
+.rating-overlay {
+position: fixed; inset: 0; background: rgba(2,62,138,0.55);
+display: flex; align-items: center; justify-content: center;
+z-index: 5000; padding: 20px;
+opacity: 0; pointer-events: none;
+transition: opacity .35s;
+}
+.rating-overlay.show { opacity: 1; pointer-events: all; }
+
+.rating-modal {
+background: white; border-radius: 28px; padding: 30px 22px 24px;
+width: 100%; max-width: 360px; text-align: center;
+box-shadow: 0 24px 60px rgba(0,119,182,.3);
+transform: scale(.85) translateY(30px);
+transition: transform .4s cubic-bezier(.175,.885,.32,1.275);
+}
+.rating-overlay.show .rating-modal { transform: scale(1) translateY(0); }
+
+.rating-icon {
+width: 70px; height: 70px;
+background: linear-gradient(135deg,var(–primary),var(–teal));
+border-radius: 22px; display: flex; align-items:center; justify-content:center;
+margin: 0 auto 16px; font-size: 32px;
+}
+.rating-modal h3 { font-size: 20px; font-weight: 900; margin-bottom: 6px; }
+.rating-modal p  { font-size: 13px; color: #777; margin-bottom: 22px; line-height: 1.6; }
+
+.stars-row {
+display: flex; justify-content: center; gap: 10px; margin-bottom: 18px;
+}
+.star-btn {
+font-size: 38px; background: none; border: none; cursor: pointer;
+transition: transform .2s; line-height: 1; filter: grayscale(1) opacity(.35);
+}
+.star-btn.active, .star-btn:hover { filter: none; transform: scale(1.25); }
+
+.rating-comment {
+width: 100%; border: 2px solid #e0edf5; border-radius: 14px;
+padding: 12px 14px; font-family: ‘Cairo’,sans-serif; font-size: 14px;
+resize: none; outline: none; margin-bottom: 16px; color: var(–text);
+transition: border-color .3s;
+}
+.rating-comment:focus { border-color: var(–primary); }
+
+.rating-btns { display: flex; gap: 10px; }
+.btn-skip {
+flex: 1; background: #f0f4f8; border: none; border-radius: 14px;
+padding: 13px; font-family: ‘Cairo’,sans-serif; font-size: 14px;
+font-weight: 700; color: #888; cursor: pointer; transition: all .2s;
+}
+.btn-skip:hover { background: #e0e8f0; }
+.btn-rate {
+flex: 2; background: linear-gradient(135deg,var(–primary-dark),var(–teal));
+border: none; border-radius: 14px; padding: 13px;
+font-family: ‘Cairo’,sans-serif; font-size: 14px;
+font-weight: 700; color: white; cursor: pointer;
+box-shadow: 0 6px 20px rgba(0,119,182,.3); transition: all .2s;
+}
+.btn-rate:hover { transform: translateY(-2px); }
+.btn-rate:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+/* ===== REVIEWS SECTION (HOME) ===== */
+.reviews-section { padding: 0 18px 26px; }
+.reviews-header {
+display: flex; align-items: center; justify-content: space-between;
+margin-bottom: 14px;
+}
+.reviews-header .sec-title { margin-bottom: 0; text-align: right; }
+.reviews-avg {
+display: flex; align-items: center; gap: 6px;
+background: linear-gradient(135deg,var(–primary),var(–teal));
+color: white; padding: 6px 14px; border-radius: 50px;
+font-size: 14px; font-weight: 900;
+}
+.reviews-scroll {
+display: flex; gap: 12px; overflow-x: auto; padding-bottom: 6px;
+scrollbar-width: none;
+}
+.reviews-scroll::-webkit-scrollbar { display: none; }
+.review-card {
+min-width: 230px; background: white; border-radius: 20px;
+padding: 16px; box-shadow: var(–card-shadow);
+border: 1.5px solid var(–teal-light); flex-shrink: 0;
+}
+.review-stars { font-size: 16px; margin-bottom: 8px; letter-spacing: 2px; }
+.review-text {
+[24/09/47 04:30 م] do: font-size: 13px; color: #444; line-height: 1.6;
+margin-bottom: 10px; min-height: 36px;
+}
+.review-meta {
+display: flex; align-items: center; justify-content: space-between;
+}
+.review-phone { font-size: 11px; color: #aaa; direction: ltr; }
+.review-date  { font-size: 11px; color: #bbb; }
+.no-reviews {
+text-align: center; color: #bbb; font-size: 13px;
+padding: 28px; background: white; border-radius: 18px;
+box-shadow: var(–card-shadow);
+}
+
+.btn-secondary-hero {
+background: rgba(255,255,255,0.15);
+color: white;
+border: 2px solid rgba(255,255,255,0.5);
+padding: 14px 40px;
+border-radius: 50px;
+font-family: ‘Cairo’, sans-serif;
+font-size: 16px;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s;
+backdrop-filter: blur(10px);
+}
+
+.btn-secondary-hero:hover {
+background: rgba(255,255,255,0.25);
+transform: translateY(-2px);
+}
+
+.login-card {
+border: 2px solid var(–primary-light);
+transition: all 0.2s;
+}
+
+.login-card:hover {
+transform: translateY(-3px);
+box-shadow: 0 12px 40px rgba(0,119,182,0.2);
+border-color: var(–primary);
+}
+
+.divider {
+height: 1px;
+background: #e8f0f8;
+margin: 16px 0;
+}
+</style>
+
+</head>
+<body>
+
+<!-- Toast Notification -->
+
+<div class="toast" id="toast"></div>
+
+<!-- ===== RATING MODAL ===== -->
+
+<div class="rating-overlay" id="rating-overlay">
+  <div class="rating-modal">
+    <div class="rating-icon">✨</div>
+    <h3>كيف كانت تجربتك؟</h3>
+    <p>رأيك يهمنا! قيّم خدمة الغسيل وساعدنا على التحسين</p>
+    <div class="stars-row" id="stars-row">
+      <button class="star-btn" data-val="5" onclick="selectStar(5)">★</button>
+      <button class="star-btn" data-val="4" onclick="selectStar(4)">★</button>
+      <button class="star-btn" data-val="3" onclick="selectStar(3)">★</button>
+      <button class="star-btn" data-val="2" onclick="selectStar(2)">★</button>
+      <button class="star-btn" data-val="1" onclick="selectStar(1)">★</button>
+    </div>
+    <textarea class="rating-comment" id="rating-comment" rows="3" placeholder="اكتب تعليقك هنا (اختياري)..."></textarea>
+    <div class="rating-btns">
+      <button class="btn-skip" onclick="closeRating()">تخطى</button>
+      <button class="btn-rate" id="btn-submit-rate" onclick="submitRating()" disabled>إرسال التقييم</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HOME PAGE ===== -->
+
+<div class="page active" id="page-home">
+  <div class="page-content">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-logo" onclick="showPage('home')">
+        <div class="logo-icon">&#129399;</div>
+        <div>
+          <div class="logo-text">اصل الرغوه</div>
+          <div class="logo-sub">نظام الولاء</div>
+        </div>
+      </div>
+    </div>
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">نظام الولاء</div>
+  <h1 class="hero-title">اصل<br><span>الرغوه</span></h1>
+  <p class="hero-subtitle">اغسل سيارتك واجمع غسلات لتحصل على غسيل مجاني!</p>
+
+  <div style="display:flex;flex-direction:column;gap:12px;align-items:center;position:relative;z-index:1;">
+    <button class="btn-primary" onclick="showPage('loyalty-input')">دخول العميل</button>
+    <button class="btn-secondary-hero" onclick="showPage('employee-login')">دخول الموظف</button>
+  </div>
+</div>
+
+<!-- Login Cards -->
+<div class="stats-section">
+  <div class="stat-card login-card" onclick="showPage('loyalty-input')" style="cursor:pointer;">
+    <div class="stat-icon">&#128100;</div>
+    <div class="stat-num" style="font-size:14px;">دخول</div>
+    <div class="stat-label">العميل</div>
+  </div>
+  <div class="stat-card login-card" onclick="showPage('employee-login')" style="cursor:pointer;">
+    <div class="stat-icon">&#128274;</div>
+    <div class="stat-num" style="font-size:14px;">دخول</div>
+    <div class="stat-label">الموظف</div>
+  </div>
+</div>
+
+<!-- How it works -->
+<div class="section">
+  <div class="section-title">كيف يعمل <span>النظام؟</span></div>
+  <div class="steps">
+    <div class="step-card">
+      <div class="step-num" style="font-size:18px;font-weight:900;color:white;">١</div>
+      <div class="step-content">
+        <h3>أدخل رقم جوالك</h3>
+        <p>بدون كلمة مرور أو تسجيل معقد – رقمك فقط يكفي</p>
+[24/09/47 04:30 م] do: </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num" style="font-size:18px;font-weight:900;color:white;">٢</div>
+      <div class="step-content">
+        <h3>اغسل سيارتك</h3>
+        <p>كل غسلة تُحتسب وتظهر في كرت الغسلات الخاص بك</p>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num" style="font-size:18px;font-weight:900;color:white;">٣</div>
+      <div class="step-content">
+        <h3>الغسلة الخامسة مجانية</h3>
+        <p>بعد 4 غسلات تحصل على الغسلة الخامسة مجاناً تماماً!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Reviews -->
+<div class="reviews-section">
+  <div class="reviews-header">
+    <div class="section-title" style="margin-bottom:0;">آراء <span>عملائنا</span></div>
+    <div class="reviews-avg" id="reviews-avg">★ --</div>
+  </div>
+  <div class="reviews-scroll" id="reviews-list">
+    <div class="no-reviews">لا يوجد تقييمات بعد — كن أول من يقيّم!</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>ابدأ تجميع الغسلات الآن</h2>
+  <p>سجّل رقمك واحصل على كرت الولاء المجاني</p>
+  <button class="btn-primary" onclick="showPage('loyalty-input')">دخول العميل</button>
+</div>
+
+<div style="height:20px;"></div>
+
+  </div>
+
+  <!-- Bottom Nav -->
+
+  <div class="bottom-nav">
+    <button class="bottom-nav-item active" onclick="showPage('home')">
+      <span class="nav-icon">&#127968;</span>
+      <span class="nav-label">الرئيسية</span>
+    </button>
+    <button class="bottom-nav-item" onclick="showPage('loyalty-input')">
+      <span class="nav-icon">&#127892;</span>
+      <span class="nav-label">كرتي</span>
+    </button>
+    <button class="bottom-nav-item" onclick="showPage('contact')">
+      <span class="nav-icon">&#128222;</span>
+      <span class="nav-label">تواصل</span>
+    </button>
+  </div>
+</div>
+
+<!-- ===== LOYALTY INPUT PAGE ===== -->
+
+<div class="page" id="page-loyalty-input">
+  <div class="page-content">
+    <div class="header">
+      <div class="header-logo" onclick="showPage('home')">
+        <div class="logo-icon" style="font-size:18px;font-weight:900;color:white;letter-spacing:-1px;">AR</div>
+        <div>
+          <div class="logo-text">اصل الرغوه</div>
+          <div class="logo-sub">كرت الولاء</div>
+        </div>
+      </div>
+      <div class="header-nav">
+        <button onclick="showPage('home')">← رجوع</button>
+      </div>
+    </div>
+<div class="phone-input-container">
+  <div style="width:72px;height:72px;background:linear-gradient(135deg,var(--primary),var(--teal));border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;"><svg width="36" height="36" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1" fill="white"/></svg></div>
+  <h2>أدخل رقم جوالك</h2>
+  <p>سيتم عرض كرت الغسلات الخاص بك مباشرةً</p>
+
+  <div class="input-group">
+    <div class="input-icon" style="color:white;font-size:18px;font-weight:700;">05</div>
+    <input type="tel" id="customer-phone-input" placeholder="05XXXXXXXX" maxlength="10"
+      onkeydown="if(event.key==='Enter') lookupCustomer()"
+      oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+  </div>
+
+  <button class="btn-full" onclick="lookupCustomer()" id="lookup-btn">
+    عرض كرتي
+  </button>
+
+  <div class="alert" id="lookup-alert"></div>
+</div>
+
+  </div>
+
+  <div class="bottom-nav">
+    <button class="bottom-nav-item" onclick="showPage('home')"><span class="nav-icon">&#127968;</span><span class="nav-label">الرئيسية</span></button>
+    <button class="bottom-nav-item active" onclick="showPage('loyalty-input')"><span class="nav-icon">&#127892;</span><span class="nav-label">كرتي</span></button>
+    <button class="bottom-nav-item" onclick="showPage('contact')"><span class="nav-icon">&#128222;</span><span class="nav-label">تواصل</span></button>
+  </div>
+</div>
+
+<!-- ===== LOYALTY CARD PAGE ===== -->
+
+<div class="page" id="page-loyalty-card">
+  <div class="page-content">
+    <div class="header">
+      <div class="header-logo" onclick="showPage('home')">
+[24/09/47 04:30 م] do: <div class="logo-icon" style="font-size:18px;font-weight:900;color:white;letter-spacing:-1px;">AR</div>
+        <div>
+          <div class="logo-text">اصل الرغوه</div>
+          <div class="logo-sub">كرت الولاء</div>
+        </div>
+      </div>
+      <div class="header-nav">
+        <button onclick="showPage('loyalty-input')">← رجوع</button>
+      </div>
+    </div>
+<div class="loyalty-card-container">
+  <!-- Greeting -->
+  <div class="customer-greeting">
+    <div class="phone-display" id="card-phone-display">05XXXXXXXX</div>
+    <h2 id="card-greeting">مرحباً بك!</h2>
+    <span class="status-badge" id="card-status-badge">عميل مميز ⭐</span>
+  </div>
+
+  <!-- Wash Cards -->
+  <div class="wash-cards-section">
+    <div class="wash-cards-title">كرت الغسلات</div>
+
+    <div class="wash-cars-grid" id="wash-cars-grid">
+      <!-- Filled dynamically -->
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-section">
+      <div class="progress-header">
+        <span>التقدم نحو الغسلة المجانية</span>
+        <span class="progress-count" id="progress-text">0 / 4</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+      </div>
+      <div class="next-free-badge" id="next-free-text">غسلتان أخريين للغسلة المجانية</div>
+    </div>
+
+    <!-- Free wash banner -->
+    <div class="free-wash-banner" id="free-wash-banner">
+      تهانينا! الغسلة القادمة مجانية!
+    </div>
+  </div>
+
+  <!-- Code Input -->
+  <div class="code-section">
+    <h3>أدخل رمز الغسلة</h3>
+    <p>احصل على الرمز من الموظف عند الغسيل</p>
+    <div class="code-input-row">
+      <input type="text" id="wash-code-input" placeholder="XXXX" maxlength="6"
+        oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'')">
+      <button onclick="submitWashCode()">تحقق</button>
+    </div>
+    <div class="alert" id="code-alert"></div>
+  </div>
+
+  <!-- History -->
+  <div class="history-section">
+    <h3>سجل الغسلات</h3>
+    <div class="history-list" id="wash-history-list">
+      <div style="text-align:center;color:#aaa;padding:20px;font-size:13px;">لا يوجد سجل بعد</div>
+    </div>
+  </div>
+
+  <button class="change-phone-btn" onclick="showPage('loyalty-input')">تغيير رقم الجوال</button>
+</div>
+
+  </div>
+
+  <div class="bottom-nav">
+    <button class="bottom-nav-item" onclick="showPage('home')"><span class="nav-icon">&#127968;</span><span class="nav-label">الرئيسية</span></button>
+    <button class="bottom-nav-item active" onclick="showPage('loyalty-input')"><span class="nav-icon">&#127892;</span><span class="nav-label">كرتي</span></button>
+    <button class="bottom-nav-item" onclick="showPage('contact')"><span class="nav-icon">&#128222;</span><span class="nav-label">تواصل</span></button>
+  </div>
+</div>
+
+<!-- ===== EMPLOYEE LOGIN PAGE ===== -->
+
+<div class="page" id="page-employee-login">
+  <div class="page-content">
+    <div class="header">
+      <div class="header-logo" onclick="showPage('home')">
+        <div class="logo-icon" style="font-size:18px;font-weight:900;color:white;letter-spacing:-1px;">AR</div>
+        <div>
+          <div class="logo-text">اصل الرغوه</div>
+          <div class="logo-sub">بوابة الموظف</div>
+        </div>
+      </div>
+      <div class="header-nav">
+        <button onclick="showPage('home')">← رجوع</button>
+      </div>
+    </div>
+<div class="employee-login">
+  <div style="width:72px;height:72px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;"><svg width="36" height="36" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+  <h2>دخول الموظف</h2>
+  <p>أدخل رمز الدخول الخاص بالموظف للمتابعة</p>
+
+  <div class="input-group" style="margin-bottom:16px;">
+    <div class="input-icon" style="color:white;font-size:16px;">*<div class="input-icon">🔑</div>#9679;</div>
+[24/09/47 04:30 م] do: <input type="password" id="emp-password-input" placeholder="رمز الدخول" maxlength="10"
+      onkeydown="if(event.key==='Enter') employeeLogin()">
+  </div>
+
+  <button class="btn-full" onclick="employeeLogin()">دخول</button>
+  <div class="alert" id="emp-login-alert" style="margin-top:12px;"></div>
+
+  <div style="margin-top:20px;padding:16px;background:#f0f8ff;border-radius:12px;font-size:12px;color:#666;text-align:right;">
+    رمز الدخول الافتراضي: <strong>1234</strong><br>يمكن تغييره من إعدادات الموظف
+  </div>
+</div>
+
+  </div>
+</div>
+
+<!-- ===== EMPLOYEE DASHBOARD PAGE ===== -->
+
+<div class="page" id="page-employee-dashboard">
+  <div class="page-content">
+    <div class="header">
+      <div class="header-logo" onclick="showPage('home')">
+        <div class="logo-icon" style="font-size:18px;font-weight:900;color:white;letter-spacing:-1px;">AR</div>
+        <div>
+          <div class="logo-text">اصل الرغوه</div>
+          <div class="logo-sub">لوحة الموظف</div>
+        </div>
+      </div>
+      <div class="header-nav">
+        <button onclick="employeeLogout()">خروج</button>
+      </div>
+    </div>
+<div class="employee-dashboard">
+  <!-- Employee Header -->
+  <div class="employee-header-card">
+    <div class="emp-icon" style="font-size:28px;font-weight:900;">W</div>
+    <div>
+      <h2>لوحة تحكم الموظف</h2>
+      <p>اصل الرغوه – نظام الولاء</p>
+    </div>
+  </div>
+
+  <!-- Daily Code -->
+  <div class="employee-card">
+    <h3>رمز الغسلة اليومي</h3>
+    <div class="daily-code-display">
+      <div class="code-label">الرمز الحالي صالح لـ 24 ساعة</div>
+      <div class="code-value" id="daily-code-display">----</div>
+      <div class="code-timer" id="code-timer-display">⏰ لم يتم إنشاء رمز بعد</div>
+    </div>
+    <button class="btn-generate-code" onclick="generateDailyCode()">إنشاء رمز جديد</button>
+  </div>
+
+  <!-- Search Customer -->
+  <div class="employee-card">
+    <h3>البحث عن عميل</h3>
+    <div class="input-group">
+      <div class="input-icon" style="color:white;font-size:18px;font-weight:700;">05</div>
+      <input type="tel" id="emp-search-input" placeholder="رقم جوال العميل" maxlength="10"
+        onkeydown="if(event.key==='Enter') empSearchCustomer()"
+        oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+    </div>
+    <button class="btn-full" style="margin-top:10px;" onclick="empSearchCustomer()">بحث</button>
+
+    <div class="search-result-card" id="emp-search-result">
+      <div class="customer-info">
+        <div class="cust-phone" id="emp-result-phone">—</div>
+        <div class="cust-count" id="emp-result-count">0 غسلة</div>
+      </div>
+      <div class="mini-wash-grid" id="emp-mini-grid"></div>
+      <button class="btn-add-wash" id="emp-add-wash-btn" onclick="empAddWash()">
+        إضافة غسلة
+      </button>
+      <div class="alert" id="emp-add-alert" style="margin-top:10px;"></div>
+    </div>
+  </div>
+
+  <!-- Operations Log -->
+  <div class="employee-card">
+    <h3>سجل العمليات</h3>
+    <div id="emp-operations-log">
+      <div style="text-align:center;color:#aaa;padding:20px;font-size:13px;">لا يوجد عمليات بعد</div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="employee-card">
+    <h3>إحصائيات</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div style="background:#f0f8ff;border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-size:28px;font-weight:900;color:var(--primary);" id="stat-total-customers">0</div>
+        <div style="font-size:12px;color:#666;font-weight:600;">إجمالي العملاء</div>
+      </div>
+      <div style="background:#f0fff8;border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-size:28px;font-weight:900;color:var(--success);" id="stat-total-washes">0</div>
+        <div style="font-size:12px;color:#666;font-weight:600;">إجمالي الغسلات</div>
+      </div>
+      <div style="background:#fffbf0;border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-size:28px;font-weight:900;color:var(--warning);" id="stat-free-given">0</div>
+[24/09/47 04:30 م] do: <div style="font-size:12px;color:#666;font-weight:600;">غسلات مجانية</div>
+      </div>
+      <div style="background:#f5f0ff;border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-size:28px;font-weight:900;color:#7c3aed;" id="stat-today-washes">0</div>
+        <div style="font-size:12px;color:#666;font-weight:600;">غسلات اليوم</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR Codes Button -->
+  <div class="employee-card" style="text-align:center;">
+    <h3>&#128241; رموز QR</h3>
+    <p style="font-size:13px;color:#666;margin-bottom:16px;">اعرض رموز QR لطباعتها وتعليقها في المغسلة</p>
+    <button class="btn-generate-code" onclick="showPage('qr-codes')">عرض رموز QR</button>
+  </div>
+
+  <!-- Change Password -->
+  <div class="employee-card">
+    <h3>تغيير رمز الدخول</h3>
+    <div class="input-group" style="margin-bottom:10px;">
+      <div class="input-icon" style="color:white;font-size:16px;">*<div class="input-icon">🔑</div>#9679;</div>
+      <input type="password" id="new-password-input" placeholder="رمز الدخول الجديد" maxlength="10">
+    </div>
+    <button class="btn-full" onclick="changePassword()">حفظ الرمز الجديد</button>
+    <div class="alert" id="change-pass-alert" style="margin-top:10px;"></div>
+  </div>
+
+</div>
+
+  </div>
+
+  <div class="bottom-nav">
+    <button class="bottom-nav-item active" onclick="showPage('employee-dashboard')"><span class="nav-icon">&#127968;</span><span class="nav-label">الرئيسية</span></button>
+    <button class="bottom-nav-item" onclick="showPage('qr-codes')"><span class="nav-icon">&#128241;</span><span class="nav-label">QR Code</span></button>
+    <button class="bottom-nav-item" onclick="employeeLogout()"><span class="nav-icon">&#128274;</span><span class="nav-label">خروج</span></button>
+  </div>
+</div>
+
+<!-- ===== QR CODES PAGE ===== -->
+
+<div class="page" id="page-qr-codes">
+  <div class="page-content">
+    <div class="header">
+      <div class="header-logo" onclick="showPage('home')">
+        <div class="logo-icon" style="font-size:18px;font-weight:900;color:white;letter-spacing:-1px;">AR</div>
+        <div>
+          <div class="logo-text">اصل الرغوه</div>
+          <div class="logo-sub">رموز QR</div>
+        </div>
+      </div>
+    </div>
+<div class="qr-page">
+  <!-- Customer QR -->
+  <div class="qr-card">
+    <h3>QR Code للعملاء</h3>
+    <p>اطبع هذا الرمز وعلّقه في المغسلة – العميل يمسحه ليفتح الموقع مباشرة</p>
+    <div class="qr-code-wrapper">
+      <div id="qr-customer"></div>
+    </div>
+    <br>
+    <span class="qr-label">رابط الموقع الرئيسي</span>
+  </div>
+
+  <!-- Employee QR -->
+  <div class="qr-card">
+    <h3>QR Code للموظف</h3>
+    <p>اطبع هذا الرمز لاستخدامه داخل المغسلة – يقود مباشرة لصفحة الموظف</p>
+    <div class="qr-code-wrapper">
+      <div id="qr-employee"></div>
+    </div>
+    <br>
+    <span class="qr-label">بوابة الموظف</span>
+  </div>
+
+  <div style="background:#f0f8ff;border-radius:16px;padding:16px;text-align:center;">
+    <div style="font-size:13px;color:#666;line-height:1.7;">
+      <strong>تلميح:</strong> عند طباعة رموز QR، استخدم حجم لا يقل عن 10×10 سم لسهولة المسح
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <div class="bottom-nav">
+    <button class="bottom-nav-item" onclick="showPage('employee-dashboard')"><span class="nav-icon">&#127968;</span><span class="nav-label">الرئيسية</span></button>
+    <button class="bottom-nav-item active" onclick="showPage('qr-codes')"><span class="nav-icon">&#128241;</span><span class="nav-label">QR Code</span></button>
+    <button class="bottom-nav-item" onclick="employeeLogout()"><span class="nav-icon">&#128274;</span><span class="nav-label">خروج</span></button>
+  </div>
+</div>
+
+<!-- ===== CONTACT PAGE ===== -->
+
+<div class="page" id="page-contact">
+  <div class="page-content">
+    <div class="header">
+      <div class="header-logo" onclick="showPage('home')">
+        <div class="logo-icon" style="font-size:18px;font-weight:900;color:white;letter-spacing:-1px;">AR</div>
+        <div>
+          <div class="logo-text">اصل الرغوه</div>
+          <div class="logo-sub">تواصل معنا</div>
+        </div>
+[24/09/47 04:30 م] do: </div>
+    </div>
+<div class="contact-page">
+  <div class="contact-hero">
+    
+    <h2>تواصل مع اصل الرغوه</h2>
+    <p>نحن هنا لخدمتك على مدار اليوم</p>
+    <div class="phone-num">0539490507</div>
+  </div>
+
+  <div class="contact-buttons">
+    <a class="contact-btn call" href="tel:0539490507">
+      <div class="contact-btn-icon" style="font-size:20px;font-weight:900;color:white;">T</div>
+      <div class="contact-btn-info">
+        <div class="cbtn-title">اتصال مباشر</div>
+        <div class="cbtn-num">0539490507</div>
+      </div>
+      <div class="contact-btn-arrow">←</div>
+    </a>
+    <a class="contact-btn whatsapp" href="https://wa.me/966539490507" target="_blank">
+      <div class="contact-btn-icon" style="font-size:20px;font-weight:900;color:white;">W</div>
+      <div class="contact-btn-info">
+        <div class="cbtn-title">واتساب</div>
+        <div class="cbtn-num">0539490507</div>
+      </div>
+      <div class="contact-btn-arrow">←</div>
+    </a>
+  </div>
+
+
+</div>
+
+  </div>
+
+  <div class="bottom-nav">
+    <button class="bottom-nav-item" onclick="showPage('home')"><span class="nav-icon">&#127968;</span><span class="nav-label">الرئيسية</span></button>
+    <button class="bottom-nav-item" onclick="showPage('loyalty-input')"><span class="nav-icon">&#127892;</span><span class="nav-label">كرتي</span></button>
+    <button class="bottom-nav-item active" onclick="showPage('contact')"><span class="nav-icon">&#128222;</span><span class="nav-label">تواصل</span></button>
+  </div>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+
+<script>
+// ====================================
+// DATA STORE (localStorage persistence)
+// ====================================
+const DB = {
+  get: (key) => {
+    try { return JSON.parse(localStorage.getItem(key)); } catch { return null; }
+  },
+  set: (key, val) => {
+    try { localStorage.setItem(key, JSON.stringify(val)); return true; } catch { return false; }
+  },
+  init: () => {
+    if (!DB.get('customers')) DB.set('customers', {});
+    if (!DB.get('operations')) DB.set('operations', []);
+    if (!DB.get('daily_code')) DB.set('daily_code', null);
+    if (!DB.get('emp_password')) DB.set('emp_password', '1234');
+    if (!DB.get('stats')) DB.set('stats', { totalWashes: 0, totalFree: 0 });
+  }
+};
+
+// Initialize DB
+DB.init();
+
+// Current state
+let currentPhone = null;
+let currentPage = 'home';
+
+// ====================================
+// PAGE NAVIGATION
+// ====================================
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + pageId);
+  if (target) {
+    target.classList.add('active');
+    currentPage = pageId;
+    window.scrollTo(0, 0);
+    updateBottomNav(pageId);
+
+    // Page-specific init
+    if (pageId === 'home') updateHomeStats();
+    if (pageId === 'qr-codes') initQRCodes();
+    if (pageId === 'employee-dashboard') refreshEmployeeDashboard();
+  }
+}
+
+function updateBottomNav(pageId) {
+  // nav indices differ per page context — handled by active class directly
+}
+
+// ====================================
+// TOAST NOTIFICATIONS
+// ====================================
+let toastTimer;
+function showToast(msg, type = '') {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.className = 'toast show ' + type;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { toast.classList.remove('show'); }, 3000);
+}
+
+// ====================================
+// ALERT HELPER
+// ====================================
+function showAlert(id, msg, type) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.className = 'alert show ' + type;
+  setTimeout(() => el.classList.remove('show'), 4000);
+}
+
+// ====================================
+// HOME STATS
+// ====================================
+function updateHomeStats() {
+  // Stats elements removed from home page — nothing to update
+}
+
+function animateNum(id, target) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  let current = 0;
+  const step = Math.max(1, Math.
+[24/09/47 04:30 م] do: floor(target / 20));
+  const interval = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = current;
+    if (current >= target) clearInterval(interval);
+  }, 50);
+}
+
+// ====================================
+// CUSTOMER LOOKUP
+// ====================================
+function lookupCustomer() {
+  const phone = document.getElementById('customer-phone-input').value.trim();
+  if (!phone || phone.length < 10) {
+    showAlert('lookup-alert', '⚠️ أدخل رقم جوال صحيح (10 أرقام)', 'error');
+    return;
+  }
+  if (!phone.startsWith('05')) {
+    showAlert('lookup-alert', '⚠️ يجب أن يبدأ الرقم بـ 05', 'error');
+    return;
+  }
+
+  const customers = DB.get('customers') || {};
+  if (!customers[phone]) {
+    // New customer
+    customers[phone] = {
+      phone,
+      washes: 0,
+      totalWashes: 0,
+      freeWashesEarned: 0,
+      history: [],
+      createdAt: new Date().toISOString()
+    };
+    DB.set('customers', customers);
+  }
+
+  currentPhone = phone;
+  renderLoyaltyCard(phone);
+  showPage('loyalty-card');
+}
+
+// ====================================
+// RENDER LOYALTY CARD
+// ====================================
+function renderLoyaltyCard(phone) {
+  const customers = DB.get('customers') || {};
+  const customer = customers[phone];
+  if (!customer) return;
+
+  const washes = customer.washes || 0; // within current cycle (0-4)
+  const totalWashes = customer.totalWashes || 0;
+  const freeEarned = customer.freeWashesEarned || 0;
+
+  // Update header
+  document.getElementById('card-phone-display').textContent = phone;
+  document.getElementById('card-greeting').textContent =
+    totalWashes === 0 ? 'مرحباً بك!' :
+    totalWashes < 3 ? 'أهلاً بك!' :
+    totalWashes < 8 ? 'عميل مميز!' : 'عميل وفي!';
+
+  document.getElementById('card-status-badge').textContent =
+    totalWashes === 0 ? 'عميل جديد 🆕' :
+    washes === 4 ? 'جاهز للغسلة المجانية!' :
+    ${totalWashes} غسلة إجمالاً;
+
+  // Render car grid
+  const grid = document.getElementById('wash-cars-grid');
+  grid.innerHTML = '';
+
+  const cars = ['◆', '◆', '◆', '◆', '★'];
+  const labels = ['غسلة 1', 'غسلة 2', 'غسلة 3', 'غسلة 4', 'مجانية!'];
+
+  for (let i = 0; i < 5; i++) {
+    const item = document.createElement('div');
+    const isFree = i === 4;
+    const isFilled = i < washes;
+    const isFreeEarned = isFree && washes >= 4;
+
+    item.className = 'wash-car-item ' + (
+      isFreeEarned ? 'free earned' :
+      isFree ? 'free' :
+      isFilled ? 'filled' : 'empty'
+    );
+    item.innerHTML = ${cars[i]}<span class="car-num">${labels[i]}</span>;
+    grid.appendChild(item);
+  }
+
+  // Progress bar
+  const progress = Math.min(washes, 4);
+  const pct = (progress / 4) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = ${progress} / 4;
+
+  const remaining = 4 - progress;
+  let nextText = '';
+  if (progress === 0) nextText = 'ابدأ أول غسلة!';
+  else if (progress < 4) nextText = ${remaining} غسل${remaining === 1 ? 'ة' : 'ات'} للغسلة المجانية;
+  else nextText = 'أنت تستحق غسلة مجانية!';
+  document.getElementById('next-free-text').textContent = nextText;
+
+  // Free wash banner
+  const banner = document.getElementById('free-wash-banner');
+  banner.classList.toggle('show', washes >= 4);
+
+  // Render history
+  renderHistory(customer);
+}
+
+function renderHistory(customer) {
+  const list = document.getElementById('wash-history-list');
+  const history = (customer.history || []).slice(-5).reverse();
+
+  if (history.length === 0) {
+    list.innerHTML = '<div style="text-align:center;color:#aaa;padding:20px;font-size:13px;">لا يوجد سجل بعد</div>';
+    return;
+  }
+
+  list.innerHTML = history.map(h => `
+    <div class="history-item">
+      <div class="hist-icon">${h.type === 'free' ? '★' : '◆'}</div>
+      <div class="hist-info">
+        <div class="hist-title">${h.type === 'free' ? 'غسلة مجانية' : 'غسلة عادية'}</div>
+        <div class="hist-date">${formatDate(h.date)} • بواسطة: ${h.by || 'موظف'}</div>
+      </div>
+      <span class="hist-badge ${h.type === 'free' ? 'free' : ''}">${h.
+[24/09/47 04:30 م] do: type === 'free' ? 'مجاني' : '+1'}</span>
+    </div>
+  `).join('');
+}
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('ar-SA', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
+
+// ====================================
+// WASH CODE SUBMISSION
+// ====================================
+function submitWashCode() {
+  const code = document.getElementById('wash-code-input').value.trim().toUpperCase();
+  if (!code || code.length < 4) {
+    showAlert('code-alert', '⚠️ أدخل رمز الغسلة الصحيح', 'error');
+    return;
+  }
+
+  const dailyCode = DB.get('daily_code');
+  if (!dailyCode) {
+    showAlert('code-alert', '❌ لا يوجد رمز نشط حالياً. تواصل مع الموظف', 'error');
+    return;
+  }
+
+  // Check expiry
+  const codeTime = new Date(dailyCode.createdAt);
+  const now = new Date();
+  const hoursDiff = (now - codeTime) / (1000 * 60 * 60);
+  if (hoursDiff > 24) {
+    showAlert('code-alert', '⏰ انتهت صلاحية هذا الرمز. تواصل مع الموظف', 'warning');
+    return;
+  }
+
+  if (code !== dailyCode.code) {
+    showAlert('code-alert', '❌ الرمز غير صحيح. تأكد من الرمز مع الموظف', 'error');
+    return;
+  }
+
+  // Check if this phone already used this code today
+  const usedCodes = DB.get('used_codes') || {};
+  const codeKey = ${currentPhone}_${dailyCode.code}_${dailyCode.day};
+  if (usedCodes[codeKey]) {
+    showAlert('code-alert', '⚠️ لقد استخدمت هذا الرمز من قبل اليوم', 'warning');
+    return;
+  }
+
+  // Add wash
+  addWashToCustomer(currentPhone, 'رمز يومي');
+  usedCodes[codeKey] = new Date().toISOString();
+  DB.set('used_codes', usedCodes);
+
+  document.getElementById('wash-code-input').value = '';
+  showAlert('code-alert', '✅ تم احتساب الغسلة بنجاح!', 'success');
+  showToast('تمت إضافة غسلة جديدة!', 'success');
+
+  renderLoyaltyCard(currentPhone);
+  setTimeout(openRating, 1200);
+}
+
+// ====================================
+// CORE: ADD WASH
+// ====================================
+function addWashToCustomer(phone, by = 'موظف') {
+  const customers = DB.get('customers') || {};
+  if (!customers[phone]) {
+    customers[phone] = { phone, washes: 0, totalWashes: 0, freeWashesEarned: 0, history: [], createdAt: new Date().toISOString() };
+  }
+
+  const c = customers[phone];
+  c.washes = (c.washes || 0) + 1;
+  c.totalWashes = (c.totalWashes || 0) + 1;
+  c.lastWash = new Date().toISOString();
+
+  let histType = 'wash';
+  if (c.washes >= 5) {
+    // Completed a cycle
+    c.freeWashesEarned = (c.freeWashesEarned || 0) + 1;
+    c.washes = 0; // Reset cycle
+    histType = 'free';
+    triggerConfetti();
+  }
+
+  if (!c.history) c.history = [];
+  c.history.push({ date: new Date().toISOString(), type: histType, by });
+
+  DB.set('customers', customers);
+
+  // Log operation
+  const ops = DB.get('operations') || [];
+  ops.unshift({ phone, date: new Date().toISOString(), type: histType, by });
+  if (ops.length > 50) ops.splice(50);
+  DB.set('operations', ops);
+
+  // Update stats
+  const stats = DB.get('stats') || { totalWashes: 0, totalFree: 0 };
+  stats.totalWashes = (stats.totalWashes || 0) + 1;
+  if (histType === 'free') stats.totalFree = (stats.totalFree || 0) + 1;
+  DB.set('stats', stats);
+
+  return c;
+}
+
+// ====================================
+// EMPLOYEE AUTH
+// ====================================
+function employeeLogin() {
+  const pass = document.getElementById('emp-password-input').value;
+  const storedPass = DB.get('emp_password') || '1234';
+  if (pass === storedPass) {
+    document.getElementById('emp-password-input').value = '';
+    showPage('employee-dashboard');
+  } else {
+    showAlert('emp-login-alert', '❌ رمز الدخول غير صحيح', 'error');
+  }
+}
+
+function employeeLogout() {
+  showPage('home');
+  showToast('تم تسجيل الخروج بنجاح');
+}
+
+function changePassword() {
+  const newPass = document.getElementById('new-password-input').value.trim();
+  if (!newPass || newPass.length < 3) {
+    showAlert('change-pass-alert', '⚠️ يجب أن يكون الرمز 3 أحرف على الأقل', 'error');
+    return;
+  }
+  DB.set('emp_password', newPass);
+  document.getElementById('new-password-input').value = '';
+[24/09/47 04:30 م] do: showAlert('change-pass-alert', '✅ تم تغيير الرمز بنجاح', 'success');
+}
+
+// ====================================
+// EMPLOYEE DASHBOARD
+// ====================================
+function refreshEmployeeDashboard() {
+  // Stats
+  const customers = DB.get('customers') || {};
+  const phones = Object.keys(customers);
+  let totalWashes = 0, freeGiven = 0, todayWashes = 0;
+  const today = new Date().toDateString();
+
+  phones.forEach(p => {
+    const c = customers[p];
+    totalWashes += c.totalWashes || 0;
+    freeGiven += c.freeWashesEarned || 0;
+    if (c.history) {
+      c.history.forEach(h => {
+        if (new Date(h.date).toDateString() === today) todayWashes++;
+      });
+    }
+  });
+
+  document.getElementById('stat-total-customers').textContent = phones.length;
+  document.getElementById('stat-total-washes').textContent = totalWashes;
+  document.getElementById('stat-free-given').textContent = freeGiven;
+  document.getElementById('stat-today-washes').textContent = todayWashes;
+
+  // Daily code
+  refreshDailyCodeDisplay();
+
+  // Operations log
+  renderOperationsLog();
+}
+
+function refreshDailyCodeDisplay() {
+  const dailyCode = DB.get('daily_code');
+  const displayEl = document.getElementById('daily-code-display');
+  const timerEl = document.getElementById('code-timer-display');
+
+  if (!dailyCode) {
+    displayEl.textContent = '----';
+    timerEl.textContent = '⏰ لم يتم إنشاء رمز بعد';
+    return;
+  }
+
+  const codeTime = new Date(dailyCode.createdAt);
+  const now = new Date();
+  const hoursDiff = (now - codeTime) / (1000 * 60 * 60);
+
+  if (hoursDiff > 24) {
+    displayEl.textContent = '----';
+    timerEl.textContent = '⏰ انتهت صلاحية الرمز';
+    return;
+  }
+
+  displayEl.textContent = dailyCode.code;
+  const remaining = Math.floor(24 - hoursDiff);
+  timerEl.textContent = ✅ صالح لمدة ${remaining} ساعة أخرى;
+}
+
+function generateDailyCode() {
+  const code = generateCode();
+  DB.set('daily_code', { code, createdAt: new Date().toISOString(), day: new Date().toDateString() });
+  refreshDailyCodeDisplay();
+  showToast('تم إنشاء رمز جديد: ' + code, 'success');
+}
+
+function generateCode() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = '';
+  for (let i = 0; i < 4; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  return code;
+}
+
+function renderOperationsLog() {
+  const ops = DB.get('operations') || [];
+  const container = document.getElementById('emp-operations-log');
+
+  if (ops.length === 0) {
+    container.innerHTML = '<div style="text-align:center;color:#aaa;padding:20px;font-size:13px;">لا يوجد عمليات بعد</div>';
+    return;
+  }
+
+  container.innerHTML = ops.slice(0, 10).map(op => `
+    <div class="log-item">
+      <div class="log-icon">${op.type === 'free' ? '★' : '◆'}</div>
+      <div class="log-info">
+        <span class="log-phone">${op.phone}</span>
+        <span class="log-time">${formatDate(op.date)} • ${op.by || 'موظف'}</span>
+      </div>
+      <span class="log-type">${op.type === 'free' ? 'مجاني' : 'غسلة'}</span>
+    </div>
+  `).join('');
+}
+
+// ====================================
+// EMPLOYEE: SEARCH CUSTOMER
+// ====================================
+let empCurrentPhone = null;
+
+function empSearchCustomer() {
+  const phone = document.getElementById('emp-search-input').value.trim();
+  if (!phone || phone.length < 10) {
+    showToast('⚠️ أدخل رقم جوال صحيح', 'error');
+    return;
+  }
+
+  const customers = DB.get('customers') || {};
+  if (!customers[phone]) {
+    customers[phone] = { phone, washes: 0, totalWashes: 0, freeWashesEarned: 0, history: [], createdAt: new Date().toISOString() };
+    DB.set('customers', customers);
+  }
+
+  empCurrentPhone = phone;
+  const c = customers[phone];
+
+  document.getElementById('emp-result-phone').textContent = phone;
+  document.getElementById('emp-result-count').textContent = ${c.washes || 0}/4 غسلة;
+
+  // Mini grid
+  const grid = document.getElementById('emp-mini-grid');
+  const cars = ['◆', '◆', '◆', '◆', '★'];
+  grid.innerHTML = '';
+  for (let i = 0; i < 5; i++) {
+    const dot = document.createElement('div');
+    const w = c.washes || 0;
+    dot.
+[24/09/47 04:30 م] do: className = 'mini-wash-dot ' + (i === 4 ? (w >= 4 ? 'free' : 'empty') : i < w ? 'filled' : 'empty');
+    dot.textContent = cars[i];
+    grid.appendChild(dot);
+  }
+
+  // Check 2-hour restriction
+  const addBtn = document.getElementById('emp-add-wash-btn');
+  const alertEl = document.getElementById('emp-add-alert');
+  const lastWash = c.lastWash ? new Date(c.lastWash) : null;
+  const now = new Date();
+
+  if (lastWash) {
+    const hoursDiff = (now - lastWash) / (1000 * 60 * 60);
+    if (hoursDiff < 2) {
+      const minsLeft = Math.ceil((2 - hoursDiff) * 60);
+      addBtn.disabled = true;
+      showAlert('emp-add-alert', ⏰ لا يمكن إضافة غسلة. آخر غسلة قبل ${Math.floor(hoursDiff * 60)} دقيقة. الانتظار: ${minsLeft} دقيقة, 'warning');
+    } else {
+      addBtn.disabled = false;
+      alertEl.classList.remove('show');
+    }
+  } else {
+    addBtn.disabled = false;
+    alertEl.classList.remove('show');
+  }
+
+  document.getElementById('emp-search-result').classList.add('show');
+}
+
+function empAddWash() {
+  if (!empCurrentPhone) return;
+
+  const customers = DB.get('customers') || {};
+  const c = customers[empCurrentPhone];
+  if (!c) return;
+
+  // Double check 2-hour restriction
+  if (c.lastWash) {
+    const hoursDiff = (new Date() - new Date(c.lastWash)) / (1000 * 60 * 60);
+    if (hoursDiff < 2) {
+      showAlert('emp-add-alert', '⏰ لا يمكن إضافة غسلة في أقل من ساعتين لنفس العميل', 'warning');
+      return;
+    }
+  }
+
+  const updatedCustomer = addWashToCustomer(empCurrentPhone, 'موظف');
+  const washedCount = updatedCustomer.washes;
+  const isFree = updatedCustomer.freeWashesEarned > (c.freeWashesEarned || 0);
+
+  showToast(isFree ? 'تهانينا! أكمل 5 غسلات - غسلة مجانية!' : 'تمت إضافة غسلة بنجاح', 'success');
+  refreshEmployeeDashboard();
+  empSearchCustomer(); // Refresh display
+}
+
+// ====================================
+// QR CODES
+// ====================================
+let qrInitialized = false;
+
+function initQRCodes() {
+  if (qrInitialized) return;
+  qrInitialized = true;
+
+  const currentURL = window.location.href.split('#')[0];
+  const employeeURL = currentURL + '#employee';
+
+  setTimeout(() => {
+    try {
+      new QRCode(document.getElementById('qr-customer'), {
+        text: currentURL,
+        width: 200,
+        height: 200,
+        colorDark: '#023E8A',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H
+      });
+
+      new QRCode(document.getElementById('qr-employee'), {
+        text: employeeURL,
+        width: 200,
+        height: 200,
+        colorDark: '#00B4D8',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    } catch(e) {
+      document.getElementById('qr-customer').innerHTML = '<div style="padding:20px;color:#666;font-size:13px;">حدث خطأ في توليد QR Code</div>';
+    }
+  }, 100);
+}
+
+// Handle employee QR deep link
+if (window.location.hash === '#employee') {
+  window.addEventListener('load', () => showPage('employee-login'));
+}
+
+// ====================================
+// RATING SYSTEM
+// ====================================
+let selectedStar = 0;
+
+function openRating() {
+  selectedStar = 0;
+  document.getElementById('rating-comment').value = '';
+  document.getElementById('btn-submit-rate').disabled = true;
+  document.querySelectorAll('.star-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('rating-overlay').classList.add('show');
+}
+
+function closeRating() {
+  document.getElementById('rating-overlay').classList.remove('show');
+}
+
+function selectStar(val) {
+  selectedStar = val;
+  document.querySelectorAll('.star-btn').forEach(b => {
+    b.classList.toggle('active', parseInt(b.dataset.val) <= val);
+  });
+  document.getElementById('btn-submit-rate').disabled = false;
+}
+
+function submitRating() {
+  if (!selectedStar) return;
+  const comment = document.getElementById('rating-comment').value.trim();
+  const reviews = DB.get('reviews') || [];
+  const masked = currentPhone ? currentPhone.slice(0,4)+'***'+currentPhone.slice(-2) : 'عميل';
+  reviews.unshift({
+    stars: selectedStar,
+    comment,
+    phone: masked,
+    date: new Date().
+[24/09/47 04:30 م] do: toISOString()
+  });
+  if (reviews.length > 50) reviews.splice(50);
+  DB.set('reviews', reviews);
+  closeRating();
+  showToast('شكراً على تقييمك!', 'success');
+  renderReviews();
+}
+
+function renderReviews() {
+  const reviews = DB.get('reviews') || [];
+  const container = document.getElementById('reviews-list');
+  const avgEl = document.getElementById('reviews-avg');
+  if (!container) return;
+
+  if (!reviews.length) {
+    container.innerHTML = '<div class="no-reviews">لا يوجد تقييمات بعد — كن أول من يقيّم!</div>';
+    if (avgEl) avgEl.textContent = '★ --';
+    return;
+  }
+
+  const avg = (reviews.reduce((s,r) => s + r.stars, 0) / reviews.length).toFixed(1);
+  if (avgEl) avgEl.textContent = '★ ' + avg;
+
+  container.innerHTML = reviews.slice(0, 20).map(r => {
+    const starsHtml = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+    const dateStr = new Date(r.date).toLocaleDateString('ar-SA', {day:'numeric', month:'short'});
+    return `
+      <div class="review-card">
+        <div class="review-stars" style="color:#FFB703">${starsHtml}</div>
+        <div class="review-text">${r.comment || '<span style="color:#ccc;font-style:italic">بدون تعليق</span>'}</div>
+        <div class="review-meta">
+          <span class="review-phone">${r.phone}</span>
+          <span class="review-date">${dateStr}</span>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ====================================
+// CONFETTI
+// ====================================
+function triggerConfetti() {
+  const colors = ['#0077B6', '#00B4D8', '#90E0EF', '#FFB703', '#06D6A0'];
+  for (let i = 0; i < 30; i++) {
+    setTimeout(() => {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.cssText = `
+        left: ${Math.random() * 100}vw;
+        background: ${colors[Math.floor(Math.random() * colors.length)]};
+        animation-delay: ${Math.random() * 1}s;
+        animation-duration: ${2 + Math.random() * 2}s;
+        width: ${6 + Math.random() * 8}px;
+        height: ${6 + Math.random() * 8}px;
+        border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+      `;
+      document.body.appendChild(piece);
+      setTimeout(() => piece.remove(), 4000);
+    }, i * 50);
+  }
+}
+
+// ====================================
+// INIT
+// ====================================
+updateHomeStats();
+renderReviews();
+
+// Demo data for fresh installs
+(function seedDemoData() {
+  const customers = DB.get('customers') || {};
+  if (Object.keys(customers).length === 0) {
+    // Add some sample data
+    customers['0501234567'] = { phone: '0501234567', washes: 3, totalWashes: 7, freeWashesEarned: 1, history: [
+      { date: new Date(Date.now() - 86400000 * 3).toISOString(), type: 'wash', by: 'موظف' },
+      { date: new Date(Date.now() - 86400000 * 2).toISOString(), type: 'wash', by: 'موظف' },
+      { date: new Date(Date.now() - 86400000).toISOString(), type: 'wash', by: 'رمز يومي' },
+    ], createdAt: new Date(Date.now() - 86400000 * 7).toISOString() };
+    customers['0559876543'] = { phone: '0559876543', washes: 1, totalWashes: 6, freeWashesEarned: 1, history: [
+      { date: new Date(Date.now() - 86400000).toISOString(), type: 'wash', by: 'موظف' },
+    ], createdAt: new Date(Date.now() - 86400000 * 10).toISOString() };
+    DB.set('customers', customers);
+    updateHomeStats();
+  }
+})();
+</script>
+
+</body>
+</html>
